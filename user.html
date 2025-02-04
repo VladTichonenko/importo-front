@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+    <main>
+        <div id="first-block">
+            <div id="heads">
+                <img src="img/1.png" alt="">
+                <a href="">Помощь</a>
+                <a href="analitic.html">Аналитика</a>
+                <a href="">Список товаров</a>
+                <button id="imrt">Импорт</button>
+            </div>
+            <div id="user-info">
+                <div id="inf">
+                    <h3 id="username">Имя: Тестовый Пользователь</h3>
+                    <h3 id="email">Почта: test@gmail.com</h3>
+                    <h3 id="quantity">Количество переносов товаров: 404</h3>
+                </div>
+                <div id="pagebtn">
+                    <button type="submit" id="btn-import">Импортировать</button>
+                    <button type="submit" id="btn-status">Статус переноса</button>
+                </div>
+                
+            </div>
+        </div>
+
+        <div id="text">
+            <h2>Инструменты</h2>
+        </div>
+
+        <div class="container swiper">
+            <div class="card-wrapper">
+                <ul class="card-list swiper-wrapper">
+                    <li class="card-item swiper-slide">
+                        <a href="" class="card-link" id="import">
+                            <img src="img/2-копия 1.jpg" alt="" class="card-image">
+                            <p class="badge import">Импорт</p>
+                            <h2 class="card-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit</h2>  <!-- импортировать -->
+                        </a>
+                    </li>
+                    <li class="card-item swiper-slide">
+                        <a href="ozon.html" class="card-link" id="ozon">
+                            <img src="img/ozon.png" alt="" class="card-image">
+                            <p class="badge ozon">Ozon</p>
+                            <h2 class="card-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit</h2> <!-- озон --> 
+                        </a>
+                    </li>
+                    <li class="card-item swiper-slide">
+                        <a href="" class="card-link" id="wb">
+                            <img src="img/wb.png" alt="" class="card-image">
+                            <p class="badge wb">Wildberris</p>  <!-- вб -->
+                            <h2 class="card-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit</h2> 
+                        </a>
+                    </li>
+                    <li class="card-item swiper-slide">
+                        <a href="" class="card-link" id="lamoda">
+                            <img src="img/lamoda.png" alt="" class="card-image">
+                            <p class="badge lamoda">Lamoda</p>
+                            <h2 class="card-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit</h2>
+                            <div class="overlay">Coming Soon</div> <!-- lamoda coming soon -->
+                        </a>
+                    </li>
+                    <li class="card-item swiper-slide">
+                        <a href="" class="card-link" id="yandex">
+                            <img src="img/yandex.webp" alt="" class="card-image">
+                            <p class="badge yandex">Yandex</p>
+                            <h2 class="card-title">Lorem ipsum dolor, sit amet consectetur adipisicing elit</h2> <!-- яндекс маркет -->
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="swiper-pagination"></div>
+          
+            </div>
+        </div>
+
+        <div id="second-block">
+            <div id="left-block">
+                <h2>Аналитика</h2>
+                <p>Получите полную аналиту о карточках товаров <br>и о товарах</p>
+                <button type="submit" id="btn-go-analytic" onclick="window.location.href='analitic.html'">Перейти</button>
+        </div>
+        <span id="right-block">
+            <img src="img/analytics.png" alt="">
+        </span>
+        </div>
+
+        <div id="send-form">
+            <h2>Support</h2>
+            <p>Опишите вашу проблему и вскоре, мы вышлем вам ответ на почту</p>
+    <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="8df60a2c-f55f-4fb8-ad1c-adae170ab5c0">
+        <input type="email" name="email" required placeholder="Введите вашу почту" id="email-form">
+        <input type="text" name="text" required id="text-form" placeholder="Опишите вашу проблему">
+        <button type="submit" id="btn-to-email">Submit</button>
+    </form>
+    <button type="submit" id="btn-to-text">Submit</button>
+        </div> 
+        <footer>
+        <div id="left-footer">
+            <img src="img/5.png" alt="">
+            <a href="index.html">Главная</a>
+            <a href="">Инструменты</a>
+            <a href="">Аналитика</a>
+            <a href="">Импортировать</a>
+        </div>
+        <div id="right-footer">
+            <a href=""><i class="fa-brands fa-telegram" style="color: #ffffff;"></i></a>
+            <a href=""><i class="fa-brands fa-github" style="color: #ffffff;"></i></a>
+            <a href=""><i class="fa-brands fa-instagram" style="color: #ffffff;"></i></a>
+        </div>
+        </footer>      
+    </main>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Список товаров</h2>
+            <div class="cards-container" id="cardsContainer"></div>
+        </div>
+    </div>
+
+
+    <!-- Модальное окно -->
+    <div id="myModal" class="modali">
+        <div class="modali-content">
+            <div class="modali-header">Выберите маркетплейс:</div>
+            <div class="photo-container">
+                <img src="img/ozon.png" alt="Маркетплейс 1" id="market1">
+                <img src="img/wb.png" alt="Маркетплейс 2" id="market2">
+                <img src="img/yandex.webp" alt="Маркетплейс 3" id="market3">
+            </div>
+            <div class="input-container" id="inputContainer"></div>
+            <button class="import-btn" id="importBtn" style="display: none;">Импортировать</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
+
+    main{
+        background-color: rgb(3, 3, 53);
+    }
+    footer{
+        display: flex;
+        align-items: flex-start;
+        width: auto;
+        height: 350px;
+        background-color: rgb(84, 84, 84);
+    }
+    #left-footer{
+        position: relative;
+        top: 200px;
+        display: flex;
+    }
+    #left-footer a{
+        text-decoration: none;
+        color: white;
+        font-size: 16px;
+        font-weight: 500;
+        margin: 0% 5%;
+        position: relative;
+        top: 31px;
+    }
+    #left-footer img{
+        width: 90px;
+        height: 90px;
+        padding-right: 20%;
+        margin-left: 30%;
+    }
+    #right-footer{
+        position: relative;
+        top: 212px;
+        width: 250px;
+        left: 47%;
+    }
+    #right-footer i{
+        font-size: 40px;
+        margin: 7%;
+    }
+    body{
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+    }
+    #btn-go-analytic{
+        background-color: white;
+        border: none;
+        border-radius: 25px;
+        width: 15%;
+        height: 6vh;
+        margin-left: 10%;
+        margin-top: 8%;
+        font-size: 17px;
+    }
+    #pagebtn{
+        display: flex;
+    }
+    #btn-import{
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        width: 15%;
+        height: 5vh;
+        margin-left: 10%;
+        margin-top: 15%;
+        font-size: 16px;
+    }
+    #btn-status{
+        background-color: white;
+        border: none;
+        border-radius: 15px;
+        width: 20%;
+        height: 5vh;
+        margin-left: 7%;
+        margin-top: 15%;
+        font-size: 16px;
+    }
+
+    #import img{
+        width: 120px;
+        height: 64px;
+    }
+    .card-wrapper{
+        max-width: 1200px;
+        margin-top: 5%;
+        margin-left: 9.5%;
+        overflow: hidden;
+    }
+    #text{
+        color: white;
+        font-size: 30px;
+        margin-left: 12%;
+        position: relative;
+        top: 50px;
+    }
+    #first-block{
+        background-color:  rgb(140, 82, 255);
+        border-radius: 0px 0px 50px 50px;
+        width: auto;
+        height: 75vh;
+    }
+    #heads a:nth-of-type(1){
+        margin-left: 40%;
+    
+    }
+    #heads a:nth-of-type(2){
+        margin-left: 2%;
+    }
+    #heads a:nth-of-type(3){
+        margin-left: 2%;
+    }
+    #send-form{
+        background-color: rgb(140, 82, 255);
+        margin: 0% 10%;
+        border-radius: 50px;
+        height: 275px;
+        text-align: center;
+        position: relative;
+        top: 100px;
+    }
+    #send-form form{
+        text-align: center;
+    }
+    #send-form h2{
+        color: white;
+        font-size: 30px;
+        position: relative;
+        top: 30px;
+    }
+    #send-form p{
+        color: white;
+        font-size: 15px;
+        position: relative;
+        top: 25px;
+    }
+    #email-form{
+        width: 40%;
+        height: 60px;
+        border-radius: 25px;
+        border: none;
+        margin-top: 4%;
+    }
+    #btn-to-text{
+        background-color: rgb(3, 3, 53);
+        color: white;
+        width: 10%;
+        height: 62px;
+        border-radius: 25px;
+        border: none;
+        font-size: 16px;
+        position: relative;
+        bottom: 62px;
+        left: 15.2%;
+    }
+    #btn-to-email{
+        background-color: rgb(3, 3, 53);
+        color: white;
+        width: 10%;
+        height: 62px;
+        border-radius: 25px;
+        border: none;
+        font-size: 16px;
+        position: relative;
+        bottom: 62px;
+        left: 60.3%;
+        display: none;
+    }
+    #text-form{
+        width: 40%;
+        height: 60px;
+        border-radius: 25px;
+        border: none;
+        margin-top: 4%;
+        margin-left: 29.9%;
+        display: none;
+        margin-top: 5.1%;
+    }
+    input::placeholder{
+        position: relative;
+        left: 25px;
+    }
+    #first-block a {
+        font-size: 18px;
+        color: white;
+        text-decoration: none; 
+        text-underline-offset: 4px; 
+        transition: text-decoration 0.3s, text-underline-offset 0.3s;
+    }
+    #first-block a:hover {
+        text-decoration: underline; 
+        text-underline-offset: 10px; 
+    }
+    #heads {
+        display: flex;
+        align-items: center; 
+        justify-content: flex-start; 
+        gap: 1%; 
+    }
+    #heads img{
+        margin-left: 8%;
+        width: 120px;
+        height: 120px
+    }
+    #first-block #imrt{
+        background-color: white;
+        color: rgb(140, 82, 255);
+        border: 1px solid white;
+        border-radius: 30px;
+        width: 8%;
+        height: 45px;
+        font-size: 17px;
+        position: relative;
+        font-weight: 500;
+        margin-left: 5%;    
+    }
+
+    #second-block{
+        background-color: rgb(140, 82, 255);
+        color: white;
+        margin: 10% 11%;
+
+        border-radius: 35px;
+        height: 43vh;
+    }
+    #left-block h2{
+        font-size: 45px;
+        margin-left: 9%;
+        position: relative;
+        top: 70px;
+        font-weight: 600;
+    }
+    #left-block p{
+        font-size: 20px;
+        margin-left: 9%;
+        position: relative;
+        top: 60px;
+    }
+    #right-block img{
+        width: 350px;
+        height: 400px;
+        position: relative;
+        left: 745px;
+        bottom: 351px;
+    }
+    .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 340px;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Полупрозрачный черный */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 12px; /* Чтобы соответствовало блоку */
+    pointer-events: none; /* Чтобы не блокировать клики, если нужно */
+}
+    #user-info{
+        margin-left: 20%;
+        width: 110vh;
+        height: 50vh;
+        border-radius: 25px;
+        background: linear-gradient(35deg, rgb(122, 72, 223) 25%, lightgray);
+    }
+    #user-info h3{
+        color: white;
+    }
+    #inf{
+        position: relative;
+        left: 100px;
+        top: 50px;
+    }
+    .card-link.import{
+        background-color: green;
+    }
+    .card-list .card-item{
+        list-style: none;
+    }
+   .card-list img{
+        width: 64px;
+        height: 64px;
+    }
+    .fa-solid{
+        font-size: 64px;
+        color: #000;
+    }
+    .card-list .card-item .card-link{
+        width: 300px;
+        display: block;
+        background: #fff;
+        padding: 18px;
+        border-radius: 12px;
+        text-decoration: none;
+        border: 2px solid transparent;
+        box-shadow: 0 19px 10px rgba(0, 0, 0, 0.05);
+        transition: 0.2s ease;
+    }
+    .card-list .card-item .card-link:hover{
+        border-color: #5372F0;
+    }
+    .card-list .card-link{
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+ 
+    .card-list .card-link .badge{
+        color: #5372F0;
+        padding: 9px 16px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        margin: 16px 0 18px;
+        background: #DDE4FF;  
+        width: 66px;
+        text-align: center;
+        border-radius: 50px;
+    }
+    .card-list .card-link .card-title{
+        font-size: 1.19rem;
+        color: white;
+        font-weight: 600;
+    }
+    
+
+    .card-list .card-link .badge.wb{
+        color: white;
+        background: rgb(128, 0, 128);
+    }
+    #wb{
+        background: rgb(255, 181, 255);
+    }
+    .card-list .card-link .badge.lamoda{
+        color: white;
+        background: #B25A2B;
+    }
+    #lamoda{
+          background-color: #FFE3D2;
+    }
+    
+    .card-list .card-link .badge.import{
+        color: white;
+        background: rgb(186, 151, 255);
+    }
+    #import{
+        background-color: rgb(218, 218, 218);
+    }
+    .card-list .card-link .badge.ozon{
+        color: white;
+        background: #2550ff;
+    }
+    #ozon{
+        background-color: #9cb0ff;
+    }
+    .card-list .card-link .badge.yandex{
+        color: white;
+        background: #B25A2B;
+    }
+    #yandex{
+        background-color: #FFE3D2;
+    }
+    .swiper-pagination{
+        position: relative;
+        top: 20px;
+    }
+
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 3, 53, 0.95); /* Фон модального окна */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: rgb(3, 3, 53); /* Цвет заднего фона */
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: #fff; /* Цвет текста */
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+}
+
+.cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.card {
+    background: rgb(140, 82, 255); /* Цвет карточек */
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    border-left: 5px solid rgb(97, 39, 186); /* Фиолетовая полоса слева */
+    color: #fff; /* Цвет текста в карточках */
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.status {
+    font-weight: bold;
+}
+
+.status.success {
+    color: lightgreen;
+}
+
+.status.error {
+    color: lightcoral;
+}
+
+
+
+
+
+.modali {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modali-content {
+            background-color: rgb(140, 82, 255); /* Фон модального окна */
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            text-align: center;
+        }
+
+        .modali-header {
+            font-size: 26px;
+            font-weight: bold; /* Заголовок жирным */
+            margin-bottom: 20px;
+            color: white; /* Текст заголовка белый */
+        }
+
+        .photo-container {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .photo-container img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .photo-container img:hover {
+            transform: scale(1.1);
+        }
+
+        /* При выборе фото - делаем его черно-белым */
+        .photo-container img.selected {
+            filter: grayscale(100%);
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        .input-container input {
+            padding: 10px;
+            width: 80%;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .import-btn {
+            padding: 10px 20px;
+            background-color: #fff; /* Кнопка белая */
+            color: #983cce; /* Текст на кнопке зеленый */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            display: block;
+            margin: 0 auto; /* Кнопка по центру */
+        }
+
+        .import-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+</style>
+
+<script>
+new Swiper('.card-wrapper', {
+  loop: true,
+  spaceBerween: 30,
+
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+    dynamicBullets: true
+  },
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+
+  autoplay: {
+    dalay: 4000,
+    disableOnInteraction: false 
+  },
+
+  breakpoints: {
+    0: {
+        slidesPerView: 1
+    },
+    768: {
+        slidesPerView: 2
+    },
+    1024: {
+        slidesPerView: 3
+    },
+  }
+
+});
+
+
+        document.getElementById('btn-to-text').addEventListener('click', function() {
+            document.getElementById('btn-to-text').style.display = 'none';
+            document.getElementById('btn-to-email').style.display = 'block';
+            document.getElementById('text-form').style.display = 'block';
+            document.getElementById('email-form').style.display = 'none';
+        });
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+    const modal = document.getElementById("modal");
+    const openModalBtn = document.getElementById("btn-status");
+    const closeModalBtn = document.querySelector(".close");
+    const cardsContainer = document.getElementById("cardsContainer");
+
+    openModalBtn.addEventListener("click", function () {
+        modal.style.display = "flex";
+    });
+
+    closeModalBtn.addEventListener("click", function () {
+        modal.style.display = "none";
+    });
+
+    modal.addEventListener("click", function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
+
+    function getRandomStatus() {
+        return Math.random() > 0.5 ? "Успешно" : "Ошибка";
+    }
+
+    function generateCards() {
+        for (let i = 1; i <= 20; i++) {
+            const status = getRandomStatus();
+            const card = document.createElement("div");
+            card.classList.add("card");
+            card.innerHTML = `
+                <p><strong>ID:</strong> ${i}</p>
+                <p><strong>Название:</strong> Товар ${i}</p>
+                <p><strong>Описание:</strong> Описание товара ${i}</p>
+                <p><strong>Цена:</strong> ${Math.floor(Math.random() * 5000) + 500} ₽</p>
+                <p><strong>Номер товара:</strong> ${1000 + i}</p>
+                <p class="status ${status === "Успешно" ? "success" : "error"}"><strong>Статус:</strong> ${status}</p>
+            `;
+            cardsContainer.appendChild(card);
+        }
+    }
+
+    generateCards();
+});
+
+
+
+  // Получаем элементы
+  const modal = document.getElementById('myModal');
+        const openModalBtn = document.getElementById('imrt');
+        const openModalBtn1 = document.getElementById('btn-import');
+        const market1 = document.getElementById('market1');
+        const market2 = document.getElementById('market2');
+        const market3 = document.getElementById('market3');
+        const inputContainer = document.getElementById('inputContainer');
+        const importBtn = document.getElementById('importBtn');
+        const images = [market1, market2, market3];
+
+        // Открытие модального окна
+        openModalBtn.addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+        openModalBtn1.addEventListener('click', () => {
+            modal.style.display = 'block';
+        });
+
+        // Закрытие модального окна при клике за его пределами
+        window.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Функция для отображения полей ввода в зависимости от выбранного маркетплейса
+        function showInputField(type) {
+            inputContainer.innerHTML = ''; // Очищаем контейнер
+
+            if (type === 'market1' || type === 'market3') {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.placeholder = type === 'market1' ? 'Введите API ключ' : 'Введите API ключ';
+                inputContainer.appendChild(input);
+            }
+
+            if (type === 'market2') {
+                // Для второго маркетплейса два поля ввода
+                const apiInput = document.createElement('input');
+                apiInput.type = 'text';
+                apiInput.placeholder = 'Введите API ключ';
+                inputContainer.appendChild(apiInput);
+
+                const tokenInput = document.createElement('input');
+                tokenInput.type = 'text';
+                tokenInput.placeholder = 'Введите токен';
+                inputContainer.appendChild(tokenInput);
+            }
+
+            importBtn.style.display = 'block';
+        }
+
+        // Обработчики для клика по фото маркетплейса
+        function handleImageClick(event, type) {
+            // Убираем класс "selected" у всех изображений
+            images.forEach(img => img.classList.remove('selected'));
+
+            // Добавляем класс "selected" только к выбранному изображению
+            event.target.classList.add('selected');
+
+            showInputField(type);
+        }
+
+        market1.addEventListener('click', (event) => handleImageClick(event, 'market1'));
+        market2.addEventListener('click', (event) => handleImageClick(event, 'market2'));
+        market3.addEventListener('click', (event) => handleImageClick(event, 'market3'));
+
+        // Кнопка импортировать
+        importBtn.addEventListener('click', () => {
+            alert('Данные импортированы!');
+            modal.style.display = 'none'; // Закрываем модальное окно
+        });
+</script>
+</html>

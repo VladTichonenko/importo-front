@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ваши товары с Ozon</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            background: rgb(3, 3, 53);
+        }
+        .header {
+            width: 90%;
+            margin: 0 auto 20px;
+            padding: 70px;
+            border-radius: 20px;
+            background: #5372F0;
+            color: white;
+        }
+        .search {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .search input {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+        .search i {
+            margin-left: -30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .search input:focus + i {
+            transform: rotate(360deg);
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 10px;
+            background: #9cb0ff;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .product p {
+            text-align: left; margin-left: 10px;
+        }
+        .product:hover {
+            background: #e0ffe0;
+            transform: scale(1.05);
+        }
+        .highlight {
+            background: #c8ffc8 !important;
+        }
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 380px;
+            text-align: left;
+        }
+        .modal img {
+            width: 100%;
+            height: auto;
+        }
+        .edit-btn {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-top: 1px;
+            color: blue;
+            
+        }
+
+        .edit-btn {
+            background-color: rgb(140, 82, 255);
+            border: 1px solid white;
+            border-radius: 10px;
+            width: 45%;
+            height: 40px;
+            color: white;
+            font-size: 17px;
+            position: relative;
+            top: 10px;
+            font-weight: 500;
+            margin-left: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .edit-btn:hover {
+            background-color: rgb(120, 72, 230);
+        }
+        .edit-btn i {
+            margin-right: 5px;
+        }
+
+        #heads a:nth-of-type(1){
+        margin-left: 60%;
+    
+    }
+    #heads a:nth-of-type(2){
+        margin-left: 2%;
+    }
+    #heads a:nth-of-type(3){
+        margin-left: 2%;
+    }
+
+
+        #heads {
+        display: flex;
+        align-items: center; 
+        justify-content: flex-start; 
+        gap: 1%; 
+    }
+    #heads img{
+        margin-left: 1%;
+        width: 120px;
+        height: 120px
+    }
+
+    #heads a {
+        font-size: 18px;
+        color: white;
+        text-decoration: none; 
+        text-underline-offset: 4px; 
+        
+        transition: text-decoration 0.3s, text-underline-offset 0.3s;
+    }
+    #heads a:hover {
+        text-decoration: underline; 
+        text-underline-offset: 10px; 
+    }
+
+
+    </style>
+</head>
+<body>
+
+    <div id="heads">
+        <img src="img/importo..png" alt="">
+        <a href="user.html">На главную</a>
+        <a href="">Помощь</a>
+        <a href="analitic.html">Аналитика</a>
+    </div>
+
+    <div class="header">
+        <img src="img/ozon.png" alt="Товар ${product.id}" style="width: 90px; margin-left: -98%; margin-top: -3%;">
+        <div class="search">
+            <input type="text" id="search" placeholder="Поиск товара...">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+    <div class="products" id="products"></div>
+    
+    <div class="modal" id="modal">
+        <div class="modal-content" id="modal-content"></div>
+    </div>
+
+    <script>
+        const productsContainer = document.getElementById("products");
+        const modal = document.getElementById("modal");
+        const modalContent = document.getElementById("modal-content");
+        const searchInput = document.getElementById("search");
+
+        let products = [];
+        for (let i = 1; i <= 16; i++) {
+            let status = Math.random() > 0.5 ? "Успешно" : "Ошибка";
+            let product = {
+                id: i,
+                name: `Товар ${i}`,
+                description: `Описание товара ${i}`,
+                price: `${Math.floor(Math.random() * 5000) + 500} ₽`,
+                number: 1000 + i,
+                status: status,
+                image: "https://via.placeholder.com/150"
+            };
+            products.push(product);
+        }
+
+        function renderProducts() {
+            productsContainer.innerHTML = "";
+            products.forEach(product => {
+                let div = document.createElement("div");
+                div.classList.add("product");
+                div.innerHTML = `
+                    <p><strong>ID:</strong> ${product.id}</p>
+                    <p><strong>Название:</strong> ${product.name}</p>
+                    <p><strong>Описание:</strong> ${product.description}</p>
+                    <p><strong>Цена:</strong> ${product.price}</p>
+                    <p><strong>Артикул товара:</strong> ${product.number}</p>
+                `; 
+                div.onclick = () => openModal(product);
+                productsContainer.appendChild(div);
+            });
+        }
+
+        function openModal(product) {
+            modalContent.innerHTML = `
+                <img src="img/1.png" alt="Товар ${product.id}">
+                <p><strong>ID:</strong> ${product.id}</p>
+                <p><strong>Название:</strong> ${product.name}</p>
+                <p><strong>Описание:</strong> ${product.description}</p>
+                <p><strong>Цена:</strong> ${product.price}</p>
+                <p><strong>Номер товара:</strong> ${product.number}</p>
+
+                <div class="edit-btn"><i class="fas fa-edit"></i> Редактировать</div>
+            `;
+            modal.style.display = "flex";
+        }
+
+        modal.onclick = () => modal.style.display = "none";
+
+        searchInput.addEventListener("input", () => {
+            clearTimeout(window.searchTimeout);
+            window.searchTimeout = setTimeout(() => {
+                let query = searchInput.value.trim().toLowerCase();
+                if (!query) return;
+                let productDivs = document.querySelectorAll(".product");
+                productDivs.forEach(div => {
+                    if (div.innerText.toLowerCase().includes(query)) {
+                        div.scrollIntoView({ behavior: "smooth", block: "center" });
+                        div.classList.add("highlight");
+                        setTimeout(() => div.classList.remove("highlight"), 3000);
+                    }
+                });
+            }, 4000);
+        });
+
+        renderProducts();
+    </script>
+</body>
+</html>

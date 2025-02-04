@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Modal</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #8c52ff, #5a27c1);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .background-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .background-icons i {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.1);
+            font-size: 3rem;
+            animation: moveIcons 20s linear infinite;
+        }
+
+        @keyframes moveIcons {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(100vh) translateX(100vw);
+            }
+        }
+
+        .modal {
+            position: relative;
+            z-index: 1;
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 300px;
+        }
+
+        .modal h2 {
+            margin-bottom: 1rem;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .modal button {
+            width: 100%;
+            padding: 10px;
+            background: #6a11cb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .modal button:hover {
+            background: #2575fc;
+        }
+
+        .modal .toggle {
+            margin-top: 1rem;
+            color: #6a11cb;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        #head-first {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 10px;
+}
+
+#head-first img {
+    width: 120px;
+    height: 120px;
+}
+
+    </style>
+</head>
+<body>
+    <div id="head-first">
+        <img src="img/1.png" alt="Logo">
+    </div>
+    
+    
+
+
+    <div class="background-icons">
+        <i class="fa-brands fa-amazon" style="top: 10%; left: 15%;"></i>
+        <i class="fa-brands fa-amazon" style="top: 20%; left: 60%;"></i>
+        <i class="fab fa-instagram" style="top: 50%; left: 30%;"></i>
+        <i class="fab fa-google" style="top: 70%; left: 80%;"></i>
+        <i class="fa-brands fa-telegram" style="top: 90%; left: 40%;"></i>
+        <i class="fa-brands fa-telegram" style="top: 5%; left: 30%;"></i>
+        <i class="fa-brands fa-ebay" style="top: 75%; left: 20%;"></i>
+        <i class="fa-brands fa-ebay" style="top: 55%; left: 50%;"></i>
+        <i class="fa-brands fa-amazon" style="top: 10%; left: 85%;"></i>
+        <i class="fa-brands fa-yandex" style="top: 30%; left: 50%;"></i>
+        <i class="fa-brands fa-yandex" style="top: 40%; left: 90%;"></i>
+    </div>
+
+    <div class="modal" id="loginModal">
+        <h2>Register</h2>
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button onclick="window.location.href='user.html'">Register</button>
+        <div class="toggle" onclick="toggleModal()">Switch to Login</div>
+    </div>
+
+    <div class="modal" id="marketplaceModal" style="display: none;">
+        <h2>Login</h2>
+        <input type="text" placeholder="Enter login">
+        <button onclick="window.location.href='user.html'">Login</button>
+        <div class="toggle" onclick="toggleModal()">Switch to Register</div>
+    </div>
+
+    <script>
+        function toggleModal() {
+            const loginModal = document.getElementById('loginModal');
+            const marketplaceModal = document.getElementById('marketplaceModal');
+
+            if (loginModal.style.display === 'none') {
+                loginModal.style.display = 'block';
+                marketplaceModal.style.display = 'none';
+            } else {
+                loginModal.style.display = 'none';
+                marketplaceModal.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
